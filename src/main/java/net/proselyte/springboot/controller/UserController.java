@@ -32,7 +32,7 @@ public class UserController {
         return "add";
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     public String createUser(@ModelAttribute("user") User user) {
         userService.add(user);
         return "redirect:/users";
@@ -45,14 +45,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id){
+    public String edit(Model model, @PathVariable("id") long id){
         model.addAttribute("user", userService.getById(id));
         return "edit";
     }
 
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.edit(user, id);
+    @PostMapping("/{id}/edit")
+    public String update(@ModelAttribute("user") User user) {
+        userService.edit(user);
         return "redirect:/users";
     }
 

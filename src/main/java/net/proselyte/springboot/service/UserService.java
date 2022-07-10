@@ -28,8 +28,8 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void edit(User user, long id) {
-
+    public void edit(User user) {
+        userRepository.save(user);
     }
 
     public User getById(long id){
